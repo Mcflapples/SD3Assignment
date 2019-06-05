@@ -46,6 +46,7 @@ User.findOne({email: req.body.email}).then(user =>{
                 .then(user => res.json(user))
                 .catch(err => console.log(err));
                 console.log(newUser.password);
+                console.log("User has been entered into the DB");
             });
             
         });

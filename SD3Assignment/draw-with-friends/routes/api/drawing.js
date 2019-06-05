@@ -1,18 +1,18 @@
 //this api will handle the sockets and connections on the DrawRoom components
-import { setCurrentUser } from "./actions/authorisationActions";
 const app = require("express")();
 const http = require("http").Server(app);
 const io = require("socket.io")(http);
-const bodyParser = require("body-parser");
-const cors = require("cors");
+import { json, urlencoded } from "body-parser";
+import cors from "cors";
 
+import setCurrentUser from "../../client/src/actions/authorisationActions";
 
 //Set the app to use the imported components for package handling
 app.use(cors());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended:false}));
+app.use(json());
+app.use(urlencoded({extended:false}));
 
-app.post('/login', (req,res)=> {
+app.post('/drawRoom', (req,res)=> {
     const sessionKey = setCurrentUser();
     activeUsers[sessionKey] = new ActiveUser(req.body.userName);
     res.json({success: true, sessionKey});

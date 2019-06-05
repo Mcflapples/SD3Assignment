@@ -2,7 +2,6 @@
 import React, { Component } from "react";
 import { ChromePicker } from "react-color";
 import io from "socket.io-client";
-import openSocket from "socket.io-client";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import {logoutUser } from "../../actions/authorisationActions";
@@ -163,11 +162,11 @@ const { user } = this.props.auth;
         //Create a Canvas to Draw On, the Tools for Drawing and the Logout Button
         return (
           <div>
-             <div style={{ height: "75vh" }} className="container valign-wrapper">
+             <div style={{ height: "30vh" }} className="container valign-wrapper">
  <div className="row">
    <div className="col s12 center-align">
      <h4>
-       <b>Hey there,</b> {user.userName.split(" ")[0]}
+       <b>Had Enough?,</b> {user.userName.split(" ")[0]}
        </h4>
        <button
        style={{
@@ -179,7 +178,7 @@ const { user } = this.props.auth;
        onClick={this.onLogoutClick}
        className="btn btn-large waves-effect waves-light hoverable blue accent-3"
      >
-       Logout
+       Logout Here
      </button>
      </div>
  </div>

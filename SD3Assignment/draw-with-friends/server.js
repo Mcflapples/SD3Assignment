@@ -4,9 +4,12 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const passport = require("passport");
 const users = require("./routes/api/users");
+const drawing = require("./routes/api/drawing");
+
 
 //Initialise the application 
 const application = express();
+
 
 //Body Parser middleware - tell the application what parsing to use
 application.use(
@@ -36,6 +39,7 @@ require("./config/passport")(passport);
 
 //Routes currently in Use
 application.use("/api/users", users);
+application.use("/api/drawing", drawing);
 
 //Port for server to run on, using 8080, PORT is an Environment variable
 const port = process.env.PORT || 8080;
