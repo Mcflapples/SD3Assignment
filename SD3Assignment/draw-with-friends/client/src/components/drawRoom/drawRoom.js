@@ -64,7 +64,7 @@ const { user } = this.props.auth;
         sessionKey: user.userName
       });
     }
-  }, 3000);
+  },8080);
   setInterval(() => {
   }, Math.round(1000/60));
   }

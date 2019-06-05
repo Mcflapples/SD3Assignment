@@ -2,17 +2,17 @@
 const app = require("express")();
 const http = require("http").Server(app);
 const io = require("socket.io")(http);
-import { json, urlencoded } from "body-parser";
-import cors from "cors";
+const bodyParser = require('body-parser');
+const cors = require('cors');
 
-import setCurrentUser from "../../client/src/actions/authorisationActions";
+const setCurrentUser = require('../../client/src/actions/authorisationActions');
 
 //Set the app to use the imported components for package handling
 app.use(cors());
-app.use(json());
-app.use(urlencoded({extended:false}));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:false}));
 
-app.post('/drawRoom', (req,res)=> {
+app.post('/', (req,res)=> {
     const sessionKey = setCurrentUser();
     activeUsers[sessionKey] = new ActiveUser(req.body.userName);
     res.json({success: true, sessionKey});
